@@ -3,20 +3,39 @@ import glob
 import numpy as np
 from matplotlib import pyplot as plt
 import os
+import sys
 
-# for i in range(2230):
-#     image_path = 'C:/data/fish_dat/train1_fish_normal_2230/%d.jpg'%i
-#     image = cv2.imread(image_path)
-#     image2 = np.where((image <= 254) & (image != 0), 0, image)#254보다 작은건 모조리 0으로 처리
-#     image3 = cv2.dilate(image2, kernel=np.ones((2, 2), np.uint8), iterations=1)
-#     image4 = cv2.medianBlur(src=image3, ksize= 5)
-#     cv2.imwrite('C:/data/fish_data/train1_fish_normal_2230_noise/%0d.jpg'%i, image4)
+# size_test1
+# path = r'C:/data/fish_data/train1_fish_normal_2229' # Source Folder
+# dstpath = r'C:/data/fish_data/test_image/test/train1_fish_normal_2229' # Destination Folder
 
-img = cv2.imread("C:/data/fish_dat/train1_fish_normal_2230/1.jpg", 0)
-edges = cv2.Canny(img, 125, 135)
-plt.subplot(121),plt.imshow(img,cmap = 'gray')
-plt.title('Original Image'), plt.xticks([]), plt.yticks([])
+# try:
+#     makedirs(dstpath)
+# except:
+#     print ("Directory already exist, images will be written in asme folder")
 
-plt.subplot(122),plt.imshow(edges,cmap = 'gray')
-plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
-plt.show()
+# # Folder won't used
+# files = os.listdir(path)
+
+# for image in files:
+#     img = cv2.imread(os.path.join(path,image))
+#     image1 = cv2.resize(img, (240, 160), interpolation = cv2.INTER_CUBIC)
+#     cv2.imwrite(os.path.join(dstpath,image),image1)
+
+
+# size_test2
+path = r'C:/data/fish_data/test_image2/test/train1_fish_normal_2229' # Source Folder
+dstpath = r'C:/data/fish_data/test_image/test/train2_fish_illness_556' # Destination Folder
+
+try:
+    makedirs(dstpath)
+except:
+    print ("Directory already exist, images will be written in asme folder")
+
+# Folder won't used
+files = os.listdir(path)
+
+for image in files:
+    img = cv2.imread(os.path.join(path,image))
+    image1 = cv2.resize(img, (240, 160), interpolation = cv2.INTER_CUBIC)
+    cv2.imwrite(os.path.join(dstpath,image),image1)
